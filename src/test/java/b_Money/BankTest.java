@@ -36,6 +36,7 @@ public class BankTest {
 
 @Test
 public void testOpenAccount() {
+		//trying to see if the exception works here
 	try {
 		String accountID = "Arzu";
 		SweBank.openAccount(accountID);
@@ -50,6 +51,7 @@ public void testOpenAccount() {
 	public void testDeposit() throws AccountDoesNotExistException, AccountExistsException {
 		SweBank.deposit("Ulrika", new Money(500, SEK));
 		assertEquals(500, SweBank.getBalance("Ulrika").intValue());
+		//deposit
 	 }
 
 	@Test
@@ -57,6 +59,7 @@ public void testOpenAccount() {
 		SweBank.deposit("Ulrika", new Money(500, SEK));
 		SweBank.withdraw("Ulrika", new Money(400, SEK));
 		assertEquals(100, SweBank.getBalance("Ulrika").intValue());
+		//testing deposit and withdraw together
 
 }
 
@@ -71,7 +74,9 @@ public void testOpenAccount() {
 		SweBank.deposit("Ulrika", new Money(500, SEK));
 		assertEquals(500, SweBank.getBalance("Ulrika").intValue());
 		SweBank.transfer("Ulrika", SweBank, "Bob", new Money(100, SEK));
+		//after the deposit checking if the money reached bob and is taken from ulrikas acc
 		assertEquals(400, SweBank.getBalance("Ulrika").intValue());
+		assertEquals(100, SweBank.getBalance("Bob").intValue());
 	}
 
 	@Test
@@ -80,7 +85,8 @@ public void testOpenAccount() {
 		SweBank.addTimedPayment("Ulrika", "1", new Integer(0), new Integer(0), new Money(100, SEK), SweBank, "Bob");
 		SweBank.tick();
 		SweBank.tick();
-		Assert.assertEquals(new Integer(600), SweBank.getBalance("Ulrika"));
+		Assert.assertEquals(new Integer(800), SweBank.getBalance("Ulrika"));
+		//timed payment made 2 times here means 200 sek is withdrawn and its proven in the final baalnce
 
 	}
 }

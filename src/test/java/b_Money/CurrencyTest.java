@@ -19,6 +19,7 @@ public class CurrencyTest {
 
 	@Test
 	public void testGetName() {
+		//Check if the method getName returns correct currency name
 		assertEquals("SEK", SEK.getName());
 		assertEquals("DKK", DKK.getName());
 		assertEquals("EUR", EUR.getName());
@@ -26,6 +27,7 @@ public class CurrencyTest {
 
 	@Test
 	public void testGetRate() {
+		//Check if the method getRate returns correct currency rate
 		assertEquals(0.15, SEK.getRate(), 0.001);
 		assertEquals(0.20, DKK.getRate(), 0.001);
 		assertEquals(1.5, EUR.getRate(), 0.001);
@@ -33,13 +35,14 @@ public class CurrencyTest {
 
 	@Test
 	public void testSetRate() {
+		//Check if the method setRate works correctly
 		SEK.setRate(0.25);
 		assertEquals(0.25, SEK.getRate(), 0.001);
 	}
 
 	@Test
 	public void testGlobalValue() {
-
+		//Checking global values
 		assertEquals(15.0, SEK.universalValue(100), 0.001);
 		assertEquals(20.0, DKK.universalValue(100), 0.001);
 		assertEquals(150.0, EUR.universalValue(100), 0.001);
@@ -47,7 +50,7 @@ public class CurrencyTest {
 
 	@Test
 	public void testValueInThisCurrency() {
-
+		//checking values of money in different currency(sek)
 		assertEquals(100.0, SEK.valueInThisCurrency(100, SEK), 0.001);
 		assertEquals(75.0, SEK.valueInThisCurrency(100, DKK), 0.001);
 		assertEquals(10.0, SEK.valueInThisCurrency(100, EUR), 0.001);

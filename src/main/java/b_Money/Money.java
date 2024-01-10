@@ -37,9 +37,13 @@ public class Money implements Comparable {
 	 *  @return String representing the amount of Money.
 	 */
 	public String toString() {
-		return amount/100 + " " + currency.getName();
+		int integerPart = amount / 100;
+		int decimalPart = amount % 100;
+
+		return integerPart + "." + decimalPart + " " + currency.getName();
 	}
-	
+
+
 	/**
 	 * Gets the universal value of the Money, according the rate of its Currency.
 	 * @return The value of the Money in the "universal currency".

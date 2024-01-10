@@ -26,8 +26,10 @@ public class AccountTest {
 	public void testAddRemoveTimedPayment() {
 		testAccount.addTimedPayment("1", 10, 10, new Money(100, SEK), SweBank, "Alice");
 		Assert.assertEquals(true, testAccount.timedPaymentExists("1"));
+		//adding the timed payment and checking it its true using boolean
 		testAccount.removeTimedPayment("1");
 		Assert.assertEquals(false, testAccount.timedPaymentExists("1"));
+		//removing the timed payment and checking if it works
 	}
 	
 	@Test
@@ -36,18 +38,23 @@ public class AccountTest {
 
 		for (int i = 0; i < 10; i++) {
 			testAccount.tick();
+			//calling the add timed payment method 10 times
 		}
-		Assert.assertEquals(Integer.valueOf(9930000), testAccount.getBalance());
+		//making the payment 4 times
+		Assert.assertEquals(Integer.valueOf(9960000), testAccount.getBalance());
 	}
 
 	@Test
 	public void testAddWithdraw() {
 		testAccount.withdraw(new Money(5000000, SEK));
+		// 50000.00 SEK
 		Assert.assertEquals(Integer.valueOf(5000000), testAccount.getBalance());
+		//testing the money after the withdraval to see if the value is the same
 
 	}
 	@Test
 	public void testGetBalance() {
 		Assert.assertEquals(Integer.valueOf(10000000), testAccount.getBalance());
+		//the value is the same how it is should be -> 100000.00
 	}
 }

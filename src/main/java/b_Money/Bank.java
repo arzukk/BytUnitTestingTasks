@@ -86,7 +86,7 @@ public class Bank {
 			Account account = accountlist.get(accountid);
 //			account.deposit(money);
 			account.withdraw(money);
-			//withdraw
+			//not deposit but withdraw withdraw
 		}
 	}
 	
@@ -102,6 +102,7 @@ public class Bank {
 		}
 		else {
 //			return accountlist.get(accountid).getBalance().getAmount();
+			//changes made to resolve error
 			return accountlist.get(accountid).getBalance();
 		}
 	}
